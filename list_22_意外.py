@@ -1,3 +1,6 @@
+import logging
+logging.basicConfig(level=logging.INFO)
+
 def spam(divideBy):
     try:
         return 42/divideBy
@@ -54,11 +57,14 @@ def boxPrint(symbol,width,height):
     if height <=2:
         raise Exception('Height must be greater than 2.')
 
+    logging.info('使用while循环矫正错误')
     print(symbol * width)
-
-    for i in range(height - 2):
+#使用while循环矫正错误
+    # for i in range(height - 2):
+    #     print(symbol + ' ' * (width - 2) + symbol)
+    while height - 2 > 0:
         print(symbol + ' ' * (width - 2) + symbol)
-    
+        height -=1
     print(symbol * width)
 
 for sys, w, h in (('*', 4, 4),('0', 20, 5),('x', 1, 3),('zz', 3, 3)):
@@ -81,7 +87,7 @@ for sys, w, h in (('*', 4, 4),('0', 20, 5),('x', 1, 3),('zz', 3, 3)):
 # print(factorial(5))
 
 
-import logging
+# import logging
 #去除logging
 # logging.disable(logging.CRITICAL)
 # logging.basicConfig(level = logging.DEBUG,format = ('%(asctime)s - %(levelname)s - %(message)s'))
