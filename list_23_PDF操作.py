@@ -32,20 +32,21 @@ import PyPDF2
 # from PyPDF2 import PdfFileReader, PdfFileWriter
 # # 文件的打开方法变为open
 # pdfFile = open('Python这门课.pdf', 'rb')
+#pdfFile.close()
 
 #读取加密文件
 with open('17material.pdf', 'rb') as pdfFileobj:
     pdfReader = PyPDF2.PdfFileReader(pdfFileobj)
 
-if pdfReader.isEncrypted:
-    if pdfReader.decrypt('jiaoyanshi151'):
-        pageobj = pdfReader.getPage(1)
-        print(pageobj.extractText())
+    if pdfReader.isEncrypted:
+        if pdfReader.decrypt('jiaoyanshi151'):
+            pageobj = pdfReader.getPage(0)
+            print(pageobj.extractText())
+        else:
+            print('Wrong password')
     else:
-        print('Wrong password')
-else:
-    pageobj = pdfReader.getPage(0)
-    print(pageobj.extractText())
+        pageobj = pdfReader.getPage(0)
+        print(pageobj.extractText())
 
 # #加密文件
 # with open('test_car.pdf', 'rb') as pdfFile:
@@ -58,4 +59,15 @@ else:
 #     pdfWriter.encrypt('python')
     
 #     with open('encryptedDream.pdf', 'wb') as resultPdf:
+#         pdfWriter.write(resultPdf)
+
+# with open('two.pdf', 'rb') as pdfFile:
+#     pdfReader = PyPDF2.PdfFileReader(pdfFile)
+#     pdfWriter = PyPDF2.PdfFileWriter()
+
+#     for i in range(0,5):
+#         pdfFileobj = pdfReader.getPage(i)
+#         pdfWriter.addPage(pdfFileobj)
+
+#     with open('test_pdf.pdf','wb') as resultPdf:
 #         pdfWriter.write(resultPdf)
