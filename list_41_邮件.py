@@ -76,6 +76,23 @@ body = '''
 python邮件发送PS信息
 ghfuidy@163.com
 PSzyq1996110
+python邮件发送新浪信息
+ghfuidy@sina.com
+qwezhu1996
+python邮件发送京东信息
+18952623532
+jingdongzyq1996
+python邮件发送google信息
+821927872@qq.com
+G_zyq1996110
+微软信息
+821927872@qq.com
+zyq1996110
+nvidia信息
+关联qq邮箱
+ghfuidy
+821927872@qq.com
+N_zyq1996110
 '''
 
 msg = MIMEMultipart()
