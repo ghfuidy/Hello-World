@@ -7,5 +7,3 @@ I want to record my special ideas in this project
 (this is my first github expeience!!!)
 
 Thank you!
-
-OK, this is a try.
