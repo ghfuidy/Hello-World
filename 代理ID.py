@@ -59,14 +59,14 @@ def change_ip(targetIP):
 
 
 def dailiip():
-    ip_search()
+    # ip_search()
     checktime()
     with open(r'D:\CODE\python_example\iplist.json', 'r+') as data:
         listdata = json.load(data)
         iplist = listdata['HTTPS']
-    rad_ip = random.randint(0, len(iplist))
+    rad_ip = random.randint(0, len(iplist)-1)
     change_ip(iplist[rad_ip])
-    ip_search()
+    # ip_search()
 
 
 def checktime():
