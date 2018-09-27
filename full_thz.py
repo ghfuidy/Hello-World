@@ -67,13 +67,17 @@ def getBTaddress(thz_dict):
             full_page = ''
         # #BT的下载链接
         if full_page != 'http://thz6.com/':
+            print(22)
             downloadhtml = 代理ID.openurl(full_page).decode('utf-8')
             BT_a = downloadhtml.find('<div style="padding-left:10px;">')
+            print(BT_a)
             BT_b = downloadhtml.find('onclick', BT_a)
+            print(BT_b)
             BTurl = downloadhtml[BT_a+41:BT_b-2]
         else:
             BTurl = ''
         # 链接合并为字典
+        print(33)
         thz_full = {}
         thz_full['introduceurl'] = thz_dict[each]
         thz_full['imgurl'] = img_url
@@ -81,7 +85,8 @@ def getBTaddress(thz_dict):
         thz_full['BTurl'] = BTurl
         thz_dict[each] = thz_full
         print(thz_dict[each])
-    with open('html/ABP.json', 'w') as thz_full_json:
+    print('搜集结束')
+    with open('helloworld_python/HTML/ABP.json', 'w') as thz_full_json:
         thzdata = json.dumps(thz_dict)
         thz_full_json.write(thzdata)
     return thz_dict
@@ -103,7 +108,7 @@ def thz_docx(thz_dict):
         document.add_picture(image_io, width=Inches(5))
         image_io.close()
         p = document.add_paragraph(thz_dict[each]['BTurl'])
-    document.save('html/ABP.docx')
+    document.save('helloworld_python/HTML/ABP.docx')
 
 
 if __name__ == '__main__':

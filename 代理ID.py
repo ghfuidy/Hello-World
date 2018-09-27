@@ -61,7 +61,7 @@ def change_ip(targetIP):
 def dailiip():
     # ip_search()
     checktime()
-    with open(r'D:\CODE\python_example\iplist.json', 'r+') as data:
+    with open(r'D:\CODE\python_test\iplist.json', 'r+') as data:
         listdata = json.load(data)
         iplist = listdata['HTTPS']
     rad_ip = random.randint(0, len(iplist)-1)
@@ -70,8 +70,8 @@ def dailiip():
 
 
 def checktime():
-    with open(r'D:\CODE\python_example\iplist.json', 'rb') as jsonlist:
-        try:
+    try:
+        with open(r'D:\CODE\python_test\iplist.json', 'rb') as jsonlist:
             r = json.load(jsonlist)
             if r:
                 now = time.time()
@@ -82,28 +82,28 @@ def checktime():
                     iplist = getIPlist()
                     r['HTTPS'] = iplist
                     w = json.dumps(r)
-                    with open(r'D:\CODE\python_example\iplist.json', 'w') as jsonWrite:
+                    with open(r'D:\CODE\python_test\iplist.json', 'w') as jsonWrite:
                         jsonWrite.write(w)
                 else:
                     print('间隔未到')
                     pass
             else:
                 print('file has nothing')
-        except Exception as f:
-            now = time.time()
-            r = {}
-            r['datatime'] = now
-            iplist = getIPlist()
-            r['HTTPS'] = iplist
-            w = json.dumps(r)
-            with open(r'D:\CODE\python_example\iplist.json', 'w') as jsonWrite:
-                jsonWrite.write(w)
+    except Exception as f:
+        now = time.time()
+        r = {}
+        r['datatime'] = now
+        iplist = getIPlist()
+        r['HTTPS'] = iplist
+        w = json.dumps(r)
+        with open(r'D:\CODE\python_test\iplist.json', 'w') as jsonWrite:
+            jsonWrite.write(w)
 
 
 if __name__ == '__main__':
-    dailiip()
-    # change_ip('118.89.38.21:8080')
-    # ip_search()
+    # dailiip()
+    change_ip('101.132.122.230:3128')
+    ip_search()
     # iplist = getIPlist()
     # rad_ip = random.randint(0,len(iplist))
     # print(rad_ip)

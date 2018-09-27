@@ -4,7 +4,7 @@ import re
 from docx import Document
 from io import BytesIO
 from docx.shared import Inches
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+# from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 def getSNIS():
     代理ID.dailiip()
@@ -32,12 +32,12 @@ def getSNIS():
 
     # 将数据保存为一个json文件
     jsondata = json.dumps(tha_list)
-    with open('html/thzla1.json', 'a') as f:
+    with open('helloworld_python/HTML/thzla1.json', 'a') as f:
         f.write(jsondata)
 
 
 def getBTaddress():
-    with open('html/thzla1.json', 'r') as thzjson:
+    with open('helloworld_python/HTML/thzla1.json', 'r') as thzjson:
         jsondata = thzjson.read().encode('utf-8')
         thz_dict = json.loads(jsondata)
         for each in thz_dict:
@@ -83,7 +83,7 @@ def getBTaddress():
             thz_full['BTurl'] = BTurl
             thz_dict[each] = thz_full
             print(thz_dict[each])
-    with open('html/thzla.json', 'w') as thz_full_json:
+    with open('helloworld_python/HTML/thzla.json', 'w') as thz_full_json:
         thzdata = json.dumps(thz_dict)
         thz_full_json.write(thzdata)
 
@@ -109,4 +109,5 @@ def getBTaddress():
 #             thz_fulldict[each]['BTurl'] = downloadhtml[BT_a+41:BT_b-2]
 
 print('start')
+getSNIS()
 getBTaddress()

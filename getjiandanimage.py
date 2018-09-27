@@ -2,6 +2,7 @@ import urllib.request
 import os
 import base64
 import random
+import 代理ID
 
 def url_open(url):
     useragent_list = ['Mozilla/5.0 (Windows NT 6.2; rv:51.0) Gecko/20100101 Firefox/51.0',
@@ -30,6 +31,7 @@ def get_page(url):
 
 
 def find_img(url):
+    代理ID.dailiip()
     html = url_open(url).decode('utf-8')
     img_address = []
 
@@ -52,6 +54,7 @@ def find_img(url):
 
 def save_imgs(folder, img_address):
     for each in img_address:
+        print(each)
         filename = each.split('/')[-1]
         with open(filename, 'wb') as f:
             img = url_open(each)
@@ -69,12 +72,13 @@ def download_img(folder=r'OOXX', pages=10):
     page_num = int(get_page(url))
 
     for i in range(pages):
+        代理ID.dailiip()
         page_url = url + 'page-' + str(page_num) + '#comments'
         page_num -= 1
         print(page_url)
         img_address = find_img(page_url)
+        print('findOK')
         save_imgs(folder,img_address)
-
 
 if __name__ == '__main__':
     download_img()
