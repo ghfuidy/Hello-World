@@ -93,6 +93,13 @@ nvidia信息
 ghfuidy
 821927872@qq.com
 N_zyq1996110
+nike账户
+15370703015
+Zyq1996110
+821927872@qq.com
+orcal账户
+ghfuidy@163.com
+QrRT3xbKV6kJKVZ
 '''
 
 msg = MIMEMultipart()
@@ -106,7 +113,7 @@ server.login(sender, mypass)
 
 msg.attach(MIMEText(body, 'plain', 'utf-8'))
 
-with open(r'D:\用户目录\我的图片\美莉\156649_201611091239450326371557.jpg', 'rb') as fp:
+with open(r'C:\python_example\OOXX\005Pcwbtgy1fd6io20emoj30rs14fjyo.jpg', 'rb') as fp:
     img = MIMEImage(fp.read())
 
 img.add_header('Content-Disposition', 'attachment',filename='girl.jpg')
@@ -116,7 +123,7 @@ msg.attach(img)
 try:
     server.sendmail(sender, toAddr, msg.as_string())
     print('successfully')
-except server.SMTPException as e:
+except Exception as e:
     print(e)
     print('fail')
 finally:

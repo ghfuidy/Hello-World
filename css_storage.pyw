@@ -12,7 +12,7 @@ class Application(Frame):
         Frame.__init__(self, master)
         self.pack()
         self.createWidgets()
-        with open(r"C:\Users\Administrator\Desktop\文档与数据\css_attribute.json", 'rb') as json_file:
+        with open(r"D:\学习资料\书籍PDF文件\word_list.json", 'rb') as json_file:
             self.json_file = json_file
             self.jsondata = json.load(json_file)
 
@@ -37,7 +37,7 @@ class Application(Frame):
 
         if key != '' and keyvalue != '':
             self.jsondata[key] = keyvalue
-            with open(r"C:\Users\Administrator\Desktop\文档与数据\css_attribute.json", 'w', encoding='utf-8') as json_file:
+            with open(r"D:\学习资料\书籍PDF文件\word_list.json", 'w', encoding='utf-8') as json_file:
                 json.dump(self.jsondata, json_file)
             messagebox.showinfo('提示', '输入成功\n' + key + '的值是:' + keyvalue)
         else:

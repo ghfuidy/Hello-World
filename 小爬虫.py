@@ -73,7 +73,11 @@ if 'translateResult' in infos:
     try:
         yuanwen = infos['translateResult'][0][0]['src']
         result = infos['translateResult'][0][0]['tgt']
+        smartresult = infos['smartResult']['entries']
         print(yuanwen,'的翻译是',result)
+        print(smartresult)
+        for each in smartresult:
+            print(each)
     except:
         pass
 # # -------------------------------

@@ -15,9 +15,12 @@ def url_open(url):
         'User-Agent':useraggent_choose,
     }
     req = urllib.request.Request(url,headers=header)
-
-    response = urllib.request.urlopen(req)
-    html = response.read()
+    try:
+        response = urllib.request.urlopen(req,timeout=20)
+        html = response.read()
+    except:
+        print('error')
+        html = ''
 
     return html
 
@@ -58,7 +61,10 @@ def save_imgs(folder, img_address):
         filename = each.split('/')[-1]
         with open(filename, 'wb') as f:
             img = url_open(each)
-            f.write(img)
+            if img:
+                f.write(img)
+            else:
+                pass
 
 
 def download_img(folder=r'OOXX', pages=10):

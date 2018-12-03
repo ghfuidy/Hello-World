@@ -18,7 +18,7 @@ class Employee():
 
     raiseAmount = 2
     employeeNum = 0
-    def  __init__(self, first, surname, salary):
+    def __init__(self, first, surname, salary):
         self.first = first
         self.surname = surname
         self.salary = salary
