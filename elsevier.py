@@ -56,7 +56,7 @@ def searchjournal(searchname):
     }
     req = urllib.request.Request(url,data=data,headers=header)
     try:
-        response = urllib.request.urlopen(req)
+        response = urllib.request.urlopen(req,timeout=20)
         html = response.read().decode('utf-8')
         soup = BeautifulSoup(html, 'lxml')
         part1 = soup.find('table',class_='table_yjfx')
@@ -65,7 +65,8 @@ def searchjournal(searchname):
         part_th = part2.parent
         IF = part_th.find('td',string=re.compile(r"(\d{0,3}\.\d{3})"))
         jcr_part = part_th.find('td',string=re.compile(r"(\d?区{1})"))
-        IF_l = [IF.text,jcr_part.text]
+        journalname = IF.find_previous_sibling('td')
+        IF_l = [IF.text,jcr_part.text,journalname.a.text]
     except Exception as e:
         print('error',e)
         html = ''
@@ -199,16 +200,18 @@ if __name__ == '__main__':
             IF_list = searchjournal(pb_journal)
             new_a_dict = article_dict[each_a]
             if IF_list:
+                new_a_dict['journalname'] = IF_list[2]
                 new_a_dict['impactfactor'] = IF_list[0]
                 new_a_dict['JCR'] = IF_list[1]
             else:
+                new_a_dict['journalname'] = 'null'
                 new_a_dict['impactfactor'] = 'null'
-                new_a_dict['JCR'] = 'null'                
+                new_a_dict['JCR'] = 'null'               
             search_result_keyword[article_dict[each_a]['title']] = new_a_dict
         get_page += len(article_dict)
         browser.get(url + '&offset=' + str(get_page))
     search_result[input_keywords] = search_result_keyword
-    with open('helloworld_python/HTML/sciencedirect.json', 'w', encoding ='utf-8') as topfilm:
+    with open('C://python_example//helloworld_python//HTML//'+input_keywords+'.json', 'w', encoding ='utf-8') as topfilm:
         filmdata = json.dumps(search_result,ensure_ascii=False)
         topfilm.write(filmdata)
     browser.quit()

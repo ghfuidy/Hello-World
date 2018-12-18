@@ -54,7 +54,7 @@ for x in range(255):
     im.save(fake_buf_file, "png")
     r.add_picture(fake_buf_file)
     fake_buf_file.close()
-
+   
 #一句话的渐变
 document.add_page_break()
 p = document.add_paragraph()
