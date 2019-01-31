@@ -112,17 +112,17 @@ print(resolution())
 time.sleep(1)
 
 
-one_img = Image.open(r'C:\python_example\helloworld_python\HTML\FIFA_img\one.png')
+one_img = Image.open(r'D:\python_example\helloworld_python\HTML\FIFA_img\one.png')
 one_img_hash = get_hash(one_img)
-two_img = Image.open(r'C:\python_example\helloworld_python\HTML\FIFA_img\two.png')
+two_img = Image.open(r'D:\python_example\helloworld_python\HTML\FIFA_img\two.png')
 two_img_hash = get_hash(two_img)
-finial_img = Image.open(r'C:\python_example\helloworld_python\HTML\FIFA_img\finial.png')
+finial_img = Image.open(r'D:\python_example\helloworld_python\HTML\FIFA_img\finial.png')
 finial_img_hash = get_hash(finial_img)
-skip_img = Image.open(r'C:\python_example\helloworld_python\HTML\FIFA_img\S_skip.png')
+skip_img = Image.open(r'D:\python_example\helloworld_python\HTML\FIFA_img\S_skip.png')
 skip_img_hash = get_hash(skip_img)
-over_img = Image.open(r'C:\python_example\helloworld_python\HTML\FIFA_img\over.png')
+over_img = Image.open(r'D:\python_example\helloworld_python\HTML\FIFA_img\over.png')
 over_img_hash = get_hash(over_img)
-confirm_img = Image.open(r'C:\python_example\helloworld_python\HTML\FIFA_img\confirm.png')
+confirm_img = Image.open(r'D:\python_example\helloworld_python\HTML\FIFA_img\confirm.png')
 confirm_img_hash = get_hash(confirm_img)
 
 topx, topy = window_size[0], window_size[1]

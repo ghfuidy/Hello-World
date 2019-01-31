@@ -50,6 +50,8 @@ def searchjournal(searchname):
     try:
         response = urllib.request.urlopen(req)
         html = response.read().decode('utf-8')
+        # with open('C://python_example//helloworld_python//HTML//test.html','wb') as jsonf:
+        #     jsonf.write(html.encode('utf-8'))
         soup = BeautifulSoup(html, 'lxml')
         part1 = soup.find('table',class_='table_yjfx')
         issn_pattern = r"(\d{4}\-\d{4})"

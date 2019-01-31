@@ -16,9 +16,13 @@ def openurl(url):
         'User-Agent': useraggent_choose,
     }
     req = urllib.request.Request(url, headers=headers)
-    response = urllib.request.urlopen(req,timeout=20)
-    html = response.read()
-    return html
+    try:
+        response = urllib.request.urlopen(req,timeout=20)
+        html = response.read()
+        return html
+    except:
+        html = ''
+        return html
 
 
 def getIPlist():

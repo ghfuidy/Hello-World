@@ -211,7 +211,7 @@ if __name__ == '__main__':
         get_page += len(article_dict)
         browser.get(url + '&offset=' + str(get_page))
     search_result[input_keywords] = search_result_keyword
-    with open('C://python_example//helloworld_python//HTML//'+input_keywords+'.json', 'w', encoding ='utf-8') as topfilm:
+    with open('D://python_example//helloworld_python//HTML//'+input_keywords+'.json', 'w', encoding ='utf-8') as topfilm:
         filmdata = json.dumps(search_result,ensure_ascii=False)
         topfilm.write(filmdata)
     browser.quit()

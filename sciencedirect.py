@@ -1,4 +1,5 @@
 ###这个脚本是用来用class来重构elsevier脚本的
+###有空再说吧，先把谷歌的chrome驱动版写完
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
