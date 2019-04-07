@@ -1,4 +1,5 @@
-import openpyxl
+###将jso文件转化为excel文件。未完成。。
+import xlwt
 import json
 def readFromJson(file):
     with open(file, 'r', encoding='utf8') as fr:
@@ -7,27 +8,32 @@ def readFromJson(file):
 
 def writeToExcel(file):
     json = readFromJson(file)
-    excel = openpyxl.Workbook()
-    sheet1 = excel.create_sheet('sheet1', index=0)
-    sheet2 = excel.create_sheet('sheet2', index=0)
+    excel = xlwt.Workbook()
+    sheet1 = excel.add_sheet(u'sheet1')
+    sheet1.write(0,0,'title')
+    sheet1.write(0,1,'pdflink')
+    sheet1.write(0,2,'publish')
+    sheet1.write(0,3,'authors')
+    sheet1.write(0,4,'journalname')
+    sheet1.write(0,5,'impactfactor')
+    sheet1.write(0,6,'JCR')
     length = len(json)
-    i = 0
-    while i < length:
-        eachLine = json[i]
-        questions = eachLine['questions']
-        answer = eachLine['answer']
-        questionSize = len(questions)
-        j = 0
-        while j < questionSize:
-            ques = questions[j]
-            eachQues = ques['question']
-            sheet1.cell(row=i + 1, column=j + 1, value=eachQues)
-            if j == 0:
-                sheet2.cell(row=i + 1, column=1, value=eachQues)
-            j = j + 1
-        sheet2.cell(row=i + 1, column=2, value=answer)
-        i = i + 1
-    excel.save(r'D:\python_example\helloworld_python\HTML\advanced%20oxidation%20processes.xlsx')
+    j = 0
+    for i in json:
+        title=i
+        for each in json[i]:  
+            sheet1.write(j+1,0,json[i][each]['title'])
+            sheet1.write(j+1,1,json[i][each]['pdflink'])
+            sheet1.write(j+1,2,json[i][each]['publish'])
+            sheet1.write(j+1,3,json[i][each]['authors'])
+            sheet1.write(j+1,4,json[i][each]['journalname'])
+            sheet1.write(j+1,5,json[i][each]['impactfactor'])
+            sheet1.write(j+1,6,json[i][each]['JCR'])
+            j=j+1 
+             
+
+    excel.save('D://python_example//helloworld_python//HTML//'+title+'.xls')
 
 if __name__ == '__main__':
-    writeToExcel(r'D:\python_example\helloworld_python\HTML\advanced%20oxidation%20processes.json')
+    url = input('请输入链接')
+    writeToExcel(url)

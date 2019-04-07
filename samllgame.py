@@ -1,3 +1,6 @@
+# 弹弹球小游戏，报错可以忽视，可以运行，但bug较多，只是仿造之作，代码认识不全面。
+#pygame包的认识同样不足。
+
 import pygame, random, math, time
 
 class Ball(pygame.sprite.Sprite):

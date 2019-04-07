@@ -1,3 +1,4 @@
+###获取京东笔记本价格，性能和型号。
 import requests
 import re
 import json
