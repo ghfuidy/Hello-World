@@ -17,7 +17,7 @@ def writeToExcel(file):
     sheet1.write(0,4,'journalname')
     sheet1.write(0,5,'impactfactor')
     sheet1.write(0,6,'JCR')
-    length = len(json)
+    # length = len(json)
     j = 0
     for i in json:
         title=i
