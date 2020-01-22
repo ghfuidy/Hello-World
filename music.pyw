@@ -16,7 +16,7 @@ def get_name(singer):
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
     }
     html = requests.get(url,headers=headers,params=params).text
-    content = re.compile('callback\((.*)\)').findall(html)[0]
+    content = re.compile('callback((.*))').findall(html)[0]
     content = json.loads(content)
     data = content.get('data')
     song = data.get('song')
@@ -86,7 +86,7 @@ def get_vkey(strMediaMid,songmid,songname,singer):
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
         }
         detail_html = requests.get(url2,headers=headers,params=params).text
-        vkey_disc = re.compile('MusicJsonCallback8571665793949388\((.*?)\)').findall(detail_html)[0]
+        vkey_disc = re.compile('MusicJsonCallback8571665793949388((.*?))').findall(detail_html)[0]
         vkey_disc = json.loads(vkey_disc)
 
         data = vkey_disc['data']

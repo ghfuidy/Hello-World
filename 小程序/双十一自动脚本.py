@@ -31,31 +31,34 @@ def imgdiffer(temurl):
 
 def searchimg():
     screencap('twenty')
-    width_2,height_2,match_val_2 = imgdiffer("D:\\explor.png")
-    width_1,height_1,match_val_1 = imgdiffer("D:\\visit.png")
+    width_2,height_2,match_val_2 = imgdiffer("D:\\visit.png")
+    width_1,height_1,match_val_1 = imgdiffer("D:\\explore.png")
     if match_val_1 < match_val_2:
         width = width_1
         height = height_1
+        match_val = match_val_1
     else:
         width = width_2
         height = height_2
-    return width, height
+        match_val = match_val_2
+    return width, height, match_val
 
 def taobao():
-    subprocess.Popen('adb shell am start -n com.taobao.taobao/com.taobao.tao.TBMainActivity',shell=True, stdout=subprocess.PIPE)
-    call('adb shell input tap {} {}'.format(752,1300))
-    sleep(10)
-    print("event is finish")
-    call('adb shell input tap {} {}'.format(912,1707))
-    sleep(10)
-    print("renwu is finish")
+    # subprocess.Popen('adb shell am start -n com.taobao.taobao/com.taobao.tao.TBMainActivity',shell=True, stdout=subprocess.PIPE)
+    # call('adb shell input tap {} {}'.format(752,1300))
+    # sleep(10)
+    # print("event is finish")
+    # call('adb shell input tap {} {}'.format(912,1707))
+    # sleep(10)
+    # print("renwu is finish")
     match_val = 0
-    while match_val < 0.01:
-        width,height = searchimg()
-        if match_val >= 0.01:
+    while match_val < 0.03:
+        width,height,match_val = searchimg()
+        if match_val >= 0.03:
+            print('no match target')
             call('adb shell input swipe {} {} {} {}'.format(405,1536,405,1000))
-            width,height = searchimg()
-        if match_val < 0.01:
+            width,height,match_val = searchimg()
+        if match_val < 0.03:
             call('adb shell input tap {} {}'.format(width,height))
             print("tap")
             sleep(10)

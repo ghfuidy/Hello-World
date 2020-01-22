@@ -1,7 +1,8 @@
 # -*- coding: UTF-8 -*-
 import hashlib, time, requests, json, sys, os
-reload(sys)
-sys.setdefaultencoding( "utf-8" ) 
+# from imp import reload
+# reload(sys)
+# sys.setdefaultencoding( "utf-8" ) 
 
 class Resource(object):
 	"""docstring for Resource"""
@@ -135,7 +136,7 @@ class Resource(object):
 			"X-APICloud-AppKey":self.__appCode
 		}	
 		headers["Content-Type"] = "application/json"
-		url = self.__baseurl + '/' + object+"/"+id+"/"+relationObject;
+		url = self.__baseurl + '/' + object+"/"+id+"/"+relationObject
 		# sean 
 		r = requests.post(url, headers = headers, data = json.dumps(attr))
 		return r.text
@@ -271,7 +272,7 @@ class Resource(object):
 		# print url
 		attr.pop('userId')
 		attr = self.handleFile(attr)
-		headers["Content-Type"] = "application/json"
+		self.__headers["Content-Type"] = "application/json"
 		if self.__sessionToken:
 			self.__headers["authorization"] = self.__sessionToken
 		r = requests.put(url, headers = self.__headers, data = json.dumps(attr))
@@ -294,7 +295,7 @@ class Resource(object):
 	def createRole(self, attr):
 		if not attr:
 			return {'status':0,'msg':'please pass parameter!'}
-		attr = self.handleFile(attr);
+		attr = self.handleFile(attr)
 		headers = {
 			"X-APICloud-AppId":self.__appId,
 			"X-APICloud-AppKey":self.__appCode
@@ -320,7 +321,7 @@ class Resource(object):
 		if not id:
 			return {'status':0,'msg':'please pass parameter!'}
 		if not attr:
-			return {'status':0,'msg':'please pass parameter!'};
+			return {'status':0,'msg':'please pass parameter!'}
 		
 		attr = self.handleFile(attr)
 		self.__headers["Content-Type"] = "application/json; charset=UTF-8"	
@@ -426,7 +427,7 @@ class Resource(object):
 			return {'status':0,'msg':'please pass parameter!'}
 		
 		url = self.__baseurl + '/' +object+"?filter="
-		url += json.dumps(filter, "utf-8")
+		url += json.dumps(filter)
 		# url += json.dumps(filter)
 		if self.__sessionToken:
 			self.__headers["authorization"] = self.__sessionToken
